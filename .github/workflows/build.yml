@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    runs-on: hosted-windows-1
+    runs-on: windows-2022
     strategy:
       matrix:
         backend: [vulkan, opengl]
