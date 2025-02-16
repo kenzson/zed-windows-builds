@@ -46,7 +46,7 @@ jobs:
       - name: Checkout Zed
         uses: actions/checkout@v4
         with:
-          repository: kenzson/zed
+          repository: zed-industries/zed
           ref: ${{ github.event.inputs.zed_version }}
           path: zed
 
