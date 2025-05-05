@@ -21,7 +21,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           # 获取最新的 tag
-          LATEST_RELEASE=$(gh api repos/zed-industries/zed/releases --jq 'max_by(.created_at)')
+          LATEST_RELEASE=$(gh api repos/zed-industries/zed/tags --jq '.[0].name')
           LATEST_TAG=$(echo "$LATEST_RELEASE" | jq -r '.tag_name')
           echo "Latest tag: $LATEST_TAG"
 
