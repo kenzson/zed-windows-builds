@@ -1,4 +1,4 @@
-name: Scheduled Pre Build
+name: Scheduled Tag Build
 
 on:
   schedule:
