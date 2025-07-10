@@ -32,6 +32,10 @@ jobs:
           - backend: vulkan
             artifact_name: zed-release
             rustflags: ""
+          - backend: opengl
+            artifact_name: zed-release-opengl
+            rustflags: "--cfg gles"
+      fail-fast: false
 
     steps:
       - name: Enable long paths in Git
@@ -68,12 +72,12 @@ jobs:
       - name: Rust Cache
         uses: Swatinem/rust-cache@v2
         with:
-          key: ${{ matrix.backend }}
+          key: ${{ matrix.backend }}-${{ hashFiles('Cargo.lock') }}
           workspaces: "zed -> target"
 
       - name: Setup rustflags
         shell: pwsh
-        run: ./Parse-Rustflags.ps1 ${{ matrix.rustflags }}
+        run: ./scripts/Parse-Rustflags.ps1 ${{ matrix.rustflags }}
 
       - name: Build release
         working-directory: zed
